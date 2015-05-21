@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ernestas</groupId>
+    <artifactId>Wilded</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project_name>Wilded</project_name>
+        <project_version>v0.1</project_version>
+        <project_subdir>Wilded</project_subdir>
+
+        <lwjgl.version>2.9.3</lwjgl.version>
+        <lwjgl_util.version>2.9.0</lwjgl_util.version>
+        <slick.version>1.0.1</slick.version>
+        <png_decoder.version>1.0</png_decoder.version>
+    </properties>
+
+    <modules>
+        <module>wilded-graphics</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.lwjgl.lwjgl</groupId>
+                <artifactId>lwjgl</artifactId>
+                <version>${lwjgl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.lwjgl.lwjgl</groupId>
+                <artifactId>lwjgl_util</artifactId>
+                <version>${lwjgl_util.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slick2d</groupId>
+                <artifactId>slick2d-core</artifactId>
+                <version>${slick.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.l33tlabs.twl</groupId>
+                <artifactId>pngdecoder</artifactId>
+                <version>${png_decoder.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <finalName>${project_subdir}/${project_name} ${project_version}</finalName>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.ernestas.GraphicsMain</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <appendAssemblyId>false</appendAssemblyId>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

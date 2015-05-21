@@ -1,0 +1,11 @@
+*.class
+target
+.directory
+.project
+.settings
+.classpath
+.idea
+*.iml
+*.ipr
+*.iws
+*.swp
